@@ -1,0 +1,34 @@
+<div>
+    <h3>Bienvenido!</h3>
+    <!-- Logo -->
+    <div>
+        LOGO
+    </div>
+    <!-- Inputs -->
+    <div>
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input 
+                [(ngModel)]="currentUser.email"
+                matInput 
+                placeholder="Escribe tu e-mail">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input 
+            matInput 
+            [(ngModel)]="currentUser.password"
+            placeholder="Escribe tu contraseña">
+        </mat-form-field>       
+    </div>
+    <!-- Login -->
+    <div>
+        <button 
+            mat-raised-button
+            class=""
+            (click)="authLogin()">
+            Iniciar sesión
+        </button>
+    </div>
+    <h5>Una mano una patita </h5>
+</div>

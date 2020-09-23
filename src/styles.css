@@ -1,1 +1,238 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    margin          : 0;
+    font-family     : Roboto, "Helvetica Neue", sans-serif;
+    background-color: #fafafa;
+}
+
+/* General styles */
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Flex */
+.flex-vertical-center {
+    display    : flex;
+    align-items: center;
+}
+
+.flex-justify-center {
+    display        : flex;
+    justify-content: center;
+}
+
+.flex-vertical-end {
+    display    : flex;
+    align-items: flex-end;
+}
+
+.flex-justify-end {
+    display        : flex;
+    justify-content: flex-end;
+}
+
+.flex-space-around {
+    display        : flex;
+    justify-content: space-around;
+}
+
+.flex-space-between {
+    display        : flex;
+    justify-content: space-between !important;
+}
+
+/* Position */
+.p-relative {
+    position: relative;
+}
+
+/* Container */
+.main-container {
+    padding: 4% 5%;
+}
+
+/* Padding */
+.p-4 {
+    padding: 4px !important
+}
+
+.p-8 {
+    padding: 8px !important
+}
+
+.p-12 {
+    padding: 12px !important
+}
+
+.p-24 {
+    padding: 24px
+}
+
+/* 4 px */
+.pt-4 {
+    padding-top: 4px !important
+}
+
+.pb-4 {
+    padding-bottom: 4px !important
+}
+
+.pr-4 {
+    padding-right: 4px !important
+}
+
+.pl-4 {
+    padding-right: 4px !important
+}
+
+/* 8 px */
+.pt-8 {
+    padding-top: 8px !important
+}
+
+.pb-8 {
+    padding-bottom: 8px !important
+}
+
+.pr-8 {
+    padding-right: 8px !important
+}
+
+.pl-8 {
+    padding-right: 8px !important
+}
+
+/* 12 px */
+.pt-12 {
+    padding-top: 12px !important
+}
+
+.pb-12 {
+    padding-bottom: 12px !important
+}
+
+.pr-12 {
+    padding-right: 12px !important
+}
+
+.pl-12 {
+    padding-right: 12px !important
+}
+
+/* 24 px */
+.pt-24 {
+    padding-top: 24px !important
+}
+
+.pb-24 {
+    padding-bottom: 24px !important
+}
+
+.pr-24 {
+    padding-right: 24px !important
+}
+
+.pl-24 {
+    padding-right: 24px !important
+}
+
+/* Margin */
+.m-4 {
+    margin: 4px !important
+}
+
+.m-8 {
+    margin: 8px !important
+}
+
+.m-12 {
+    margin: 12px !important
+}
+
+.m-24 {
+    margin: 24px !important
+}
+
+/* 4 px */
+.mt-4 {
+    margin-top: 4px !important
+}
+
+.mb-4 {
+    margin-bottom: 4px !important
+}
+
+.ml-4 {
+    margin-left: 4px !important
+}
+
+.mr-4 {
+    margin-right: 4px !important
+}
+
+/* 8 px */
+.mt-8 {
+    margin-top: 8px !important
+}
+
+.mb-8 {
+    margin-bottom: 8px !important
+}
+
+.ml-8 {
+    margin-left: 8px !important
+}
+
+.mr-8 {
+    margin-right: 8px !important
+}
+
+/* 12 px */
+.mt-12 {
+    margin-top: 12px !important
+}
+
+.mb-12 {
+    margin-bottom: 12px !important
+}
+
+.ml-12 {
+    margin-left: 12px !important
+}
+
+.mr-12 {
+    margin-right: 12px !important
+}
+
+/* 24 px */
+.mt-24 {
+    margin-top: 24px !important
+}
+
+.mb-24 {
+    margin-bottom: 24px !important
+}
+
+.ml-24 {
+    margin-left: 24px !important
+}
+
+.mr-24 {
+    margin-right: 24px !important
+}

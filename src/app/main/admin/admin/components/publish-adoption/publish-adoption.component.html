@@ -1,0 +1,175 @@
+<div class="full-width main-container">
+    <form
+        [formGroup]="form"
+        (ngSubmit)="save()">
+        <div 
+            fxLayout="row"
+            fxLayout.lt-md="column"
+            class="flex-space-between">
+            <div 
+                fxFlex="1 1 68"
+                class="full-width">
+                <!-- name -->
+                <div>
+                    <mat-form-field
+                        class="full-width"
+                        appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input
+                            id="name"
+                            type="text"
+                            autocomplete="off"
+                            formControlName="name"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <!-- age, age type & animal type -->
+                <div 
+                    fxLayout.lt-sm="column"
+                    fxLayout="row"
+                    fxLayoutAlign="space-between">
+                    <mat-form-field 
+                        fxFlex="1 1 32"
+                        appearance="outline">
+                        <mat-label>Rango de edad</mat-label>
+                        <mat-select formControlName="typeAge">
+                            <mat-option [value]="null"> 
+                                Seleccione
+                            </mat-option>
+                            <mat-option [value]="'MONTH'"> 
+                                Mes
+                            </mat-option>
+                            <mat-option [value]="'YEAR'"> 
+                                Año
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field 
+                        fxFlex="1 1 32"
+                        appearance="outline">
+                        <mat-label>Edad</mat-label>
+                        <input
+                            id="age"
+                            type="number"
+                            formControlName="age"
+                            autocomplete="off"
+                            matInput>
+                    </mat-form-field>
+                    <mat-form-field 
+                        fxFlex="1 1 32"
+                        appearance="outline">
+                        <mat-label>Especie</mat-label>
+                        <mat-select formControlName="animalType">
+                            <mat-option [value]="null"> 
+                                Seleccione
+                            </mat-option>
+                            <mat-option [value]="'CAT'"> 
+                                Felino
+                            </mat-option>
+                            <mat-option [value]="'DOG'"> 
+                                Can
+                            </mat-option>
+                            <mat-option [value]="'OTHER'"> 
+                                Otro
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- description -->
+                <div>
+                    <mat-form-field 
+                        class="full-width"
+                        appearance="outline">
+                        <mat-label>Descripción</mat-label>
+                        <input
+                            id="description"
+                            type="text"
+                            autocomplete="off"
+                            formControlName="description"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <!-- phone -->
+                <div>
+                    <mat-form-field 
+                        class="full-width"
+                        appearance="outline">
+                        <mat-label>Teléfono</mat-label>
+                        <input
+                            id="phoneReference"
+                            type="number"
+                            autocomplete="off"
+                            formControlName="phoneReference"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <!-- case type -->
+                <div>
+                    <mat-form-field 
+                        class="full-width"
+                        appearance="outline">
+                        <mat-label>Tipo de caso</mat-label>
+                        <mat-select formControlName="caseType">
+                            <mat-option [value]="null"> 
+                                Seleccione
+                            </mat-option>
+                            <mat-option [value]="'INDEPENDIENT'"> 
+                                Independiente
+                            </mat-option>
+                            <mat-option [value]="'OURPROYECT'"> 
+                                Una mano, una patita
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- Image -->
+            <div fxFlex="1 1 28">
+                <div 
+                    fxLayout="column"
+                    class="flex-vertical-center"
+                    *ngIf="!((adoptionCase && adoptionCase.mainImage) || imageURLpreview)">
+                    <img 
+                        class="upload-image"
+                        src="assets/form/upload-image.png" 
+                        alt="upload-image">
+                    <div class="mt-12">
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            (click)="filePicker.click()"
+                            type="button">
+                            Subir imágen
+                        </button>
+                    </div>
+                </div>
+                <div 
+                    class="image-container p-relative"
+                    *ngIf="(adoptionCase && adoptionCase.mainImage) || imageURLpreview">
+                    <mat-icon
+                        class="cursor-pointer"
+                        color="primary"
+                        (click)="onDeleteImage()">
+                        delete
+                    </mat-icon>
+                    <img 
+                        [src]="imageURLpreview || adoptionCase.mainImage" 
+                        alt="una mano, una patita - adopción">
+                </div>
+                <input
+                    hidden
+                    type="file"
+                    #filePicker
+                    (change)="onImagePicked($event)"
+                    accept="image/x-png,image/jpg,image/jpeg">
+            </div>
+        </div>
+        <!-- Save button -->
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit">
+            Guardar
+        </button>
+    </form>
+</div>

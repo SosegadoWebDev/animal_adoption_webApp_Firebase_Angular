@@ -1,0 +1,114 @@
+<!-- Navigation -->
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div fxHide.gt-sm>
+            <button mat-icon-button>
+                <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+            </button>
+        </div>
+        <h1>Logo</h1>
+        <div 
+            fxFlex
+            fxLayoutAlign="end"
+            fxShow
+            fxHide.lt-md>
+            <a 
+                mat-button
+                [routerLink]="'/home'">
+                Home
+            </a>
+            <a 
+                mat-button
+                [routerLink]="'/quienes-somos'">
+                ¿Quiénes somos?
+            </a>
+            <a
+                mat-button
+                [routerLink]="'/adopciones-lista'">
+                Adopción
+            </a>
+            <a
+                mat-button
+                [routerLink]="'/perdidos-lista'">
+                Perdidos
+            </a>
+            <a 
+                mat-button
+                [routerLink]="'/donar'">
+                Donar
+            </a>
+            <a
+                *ngIf="!isLoggingAuthenticated"
+                mat-button
+                (click)="openLoginDialog()">
+                Iniciar sesión
+            </a>
+            <a
+                *ngIf="isLoggingAuthenticated"
+                mat-button
+                [routerLink]="'/admin/publicar'">
+                Ir al panel
+            </a>
+            <a
+                *ngIf="isLoggingAuthenticated"
+                mat-button
+                (click)="logout()">
+                Salir
+            </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- Content app -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a 
+                mat-list-item 
+                [routerLink]="'/home'">
+                Home
+            </a>
+            <a 
+                mat-list-item 
+                [routerLink]="'/quienes-somos'">
+                ¿Quiénes somos?
+            </a>
+            <a
+                mat-list-item 
+                [routerLink]="'/adopciones-lista'">
+                Adopción
+            </a>
+            <a
+                mat-list-item 
+                [routerLink]="'/perdidos-lista'">
+                Perdidos
+            </a>
+            <a 
+                mat-list-item 
+                [routerLink]="'/donar'">
+                Donar
+            </a>
+            <a
+                *ngIf="!isLoggingAuthenticated"
+                mat-list-item 
+                (click)="openLoginDialog()">
+                Iniciar sesión
+            </a>
+            <a
+                *ngIf="isLoggingAuthenticated"
+                mat-list-item 
+                [routerLink]="'/admin/publicar'">
+                Ir al panel
+            </a>
+            <a
+                *ngIf="isLoggingAuthenticated"
+                mat-list-item 
+                (click)="logout()">
+                Salir
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <!-- Content -->
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
