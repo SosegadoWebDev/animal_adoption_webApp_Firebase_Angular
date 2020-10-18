@@ -1,7 +1,40 @@
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
     height: 100%;
 }
 
 mat-sidenav {
     width: 250px;
+}
+
+mat-sidenav-container,
+mat-toolbar-row {
+    /* z-index: 10; */
+}
+
+mat-toolbar {
+    background-color: transparent !important;
+}
+
+/* div {
+    z-index: 10;
+} */
+
+.mat-toolbar-row {
+    min-height: 75px;
+}
+
+.logo {
+    width : 225px;
+    height: 85px;
+}
+
+.logo-container {
+    margin-left: 8%;
+}
+
+.active-link {
+    color        : #ffb74d;
+    border-bottom: 1px solid #ffb74d;
 }

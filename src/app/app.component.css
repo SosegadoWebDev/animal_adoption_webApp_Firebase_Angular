@@ -1,4 +1,29 @@
-html, body { 
+html,
+body {
     margin: 0;
     height: 100%;
+}
+
+div {
+    z-index: 10;
+}
+
+.background-svg-1 {
+    position        : absolute;
+    top             : 0;
+    background-image: url("/assets/SVGs/fondo-1.svg");
+    background-size : cover;
+    width           : 25%;
+    z-index         : -10;
+}
+
+.background-svg-2 {
+    position        : absolute;
+    right           : 0;
+    top             : 0;
+    background-image: url("/assets/SVGs/fondo-2.svg");
+    background-size : cover;
+    height          : 100%;
+    width           : 40%;
+    z-index         : -10;
 }

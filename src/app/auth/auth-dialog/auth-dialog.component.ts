@@ -50,10 +50,15 @@ export class AuthDialogComponent implements OnInit {
      * @description Method that will log the user, calls to the login service
      *
      */
-    authLogin(): void {
+    authLogin(): boolean {
+        console.log('asdsad')
+        if (!(this.currentUser.password && this.currentUser.email)) {
+            return false;
+        }
+
         const today = new Date();
         today.setSeconds(3600);
-        
+
         Swal.fire({
             allowOutsideClick: false,
             icon: 'info',
@@ -77,7 +82,11 @@ export class AuthDialogComponent implements OnInit {
                 let errorMessage: string;
 
                 if (err.code === 'auth/wrong-password') {
-                    errorMessage = 'La contraseña es inválida o tu usuario no posee contraseña';
+                    errorMessage = 'La contraseña es inválida o tu usuario no posee contraseña.';
+                } else if (err.code === 'auth/user-not-found') {
+                    errorMessage = 'Usuario no encontrado, probablemente escribiste mal el email.';
+                } else if (err.code === 'auth/invalid-email') {
+                    errorMessage = 'Email inválido, escribe un email correcto.';
                 }
 
                 Swal.fire({

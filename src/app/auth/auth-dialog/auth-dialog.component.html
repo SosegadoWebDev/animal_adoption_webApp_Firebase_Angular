@@ -1,34 +1,47 @@
 <div>
-    <h3>Bienvenido!</h3>
     <!-- Logo -->
-    <div>
-        LOGO
+    <div class="flex-vertical-center flex-justify-center">
+        <img 
+            src="assets/logos/imagotipo-min.png" 
+            alt="una-mano-una-patita-logo"
+            class="h-200">
     </div>
     <!-- Inputs -->
     <div>
-        <mat-form-field class="full-width">
+        <h3 class="text-h3 color-primary m-0 text-medium">Ingresa tus credenciales</h3>
+        <p class="text-1 color-lighter-gray text-regular mt-12 mb-12">Estás por ingresar al panel!</p>
+        <!-- Email control -->
+        <mat-form-field 
+            color="accent"
+            class="full-width">
             <mat-label>Email</mat-label>
             <input 
                 [(ngModel)]="currentUser.email"
                 matInput 
-                placeholder="Escribe tu e-mail">
+                placeholder="Escribe tu e-mail"
+                (keyup.enter)="authLogin()">
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <!-- Password control -->
+        <mat-form-field 
+            color="accent"
+            class="full-width">
         <mat-label>Contraseña</mat-label>
         <input 
             matInput 
             [(ngModel)]="currentUser.password"
-            placeholder="Escribe tu contraseña">
+            placeholder="Escribe tu contraseña"
+            (keyup.enter)="authLogin()">
         </mat-form-field>       
     </div>
     <!-- Login -->
-    <div>
+    <div fxLayoutAlign="end">
         <button 
             mat-raised-button
-            class=""
+            [disabled]="!(currentUser.password && currentUser.email)"
+            color="accent"
+            class="color-white"
             (click)="authLogin()">
             Iniciar sesión
         </button>
     </div>
-    <h5>Una mano una patita </h5>
 </div>

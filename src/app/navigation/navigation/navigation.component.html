@@ -1,12 +1,17 @@
 <!-- Navigation -->
-<mat-toolbar color="primary">
+<mat-toolbar>
     <mat-toolbar-row>
         <div fxHide.gt-sm>
             <button mat-icon-button>
-                <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                <mat-icon (click)="onSidenavChange(sidenav)">menu</mat-icon>
             </button>
         </div>
-        <h1>Logo</h1>
+        <div class="logo-container flex-vertical-center">
+            <img 
+                src="assets/logos/imagotipo-horizontal.png" 
+                alt="una-mano-una-patita-logo"
+                class="logo">
+        </div>
         <div 
             fxFlex
             fxLayoutAlign="end"
@@ -14,77 +19,90 @@
             fxHide.lt-md>
             <a 
                 mat-button
-                [routerLink]="'/home'">
-                Home
+                [routerLink]="'/home'"
+                routerLinkActive="active-link">
+                HOME
             </a>
             <a 
                 mat-button
-                [routerLink]="'/quienes-somos'">
-                ¿Quiénes somos?
+                [routerLink]="'/quienes-somos'"
+                routerLinkActive="active-link">
+                ¿QUIÉNES SOMOS?
             </a>
             <a
                 mat-button
-                [routerLink]="'/adopciones-lista'">
-                Adopción
+                [routerLink]="'/adopciones-lista'"
+                routerLinkActive="active-link">
+                ADOPCIÓN
             </a>
             <a
                 mat-button
-                [routerLink]="'/perdidos-lista'">
-                Perdidos
+                [routerLink]="'/perdidos-lista'"
+                routerLinkActive="active-link">
+                PERDIDOS
             </a>
             <a 
                 mat-button
-                [routerLink]="'/donar'">
-                Donar
+                [routerLink]="'/donar'"
+                routerLinkActive="active-link">
+                DONAR
             </a>
             <a
                 *ngIf="!isLoggingAuthenticated"
                 mat-button
                 (click)="openLoginDialog()">
-                Iniciar sesión
+                INICIAR SESIÓN
             </a>
             <a
                 *ngIf="isLoggingAuthenticated"
                 mat-button
-                [routerLink]="'/admin/publicar'">
-                Ir al panel
+                [routerLink]="'/admin/publicar'"
+                routerLinkActive="active-link">
+                IR PANEL
             </a>
             <a
                 *ngIf="isLoggingAuthenticated"
                 mat-button
                 (click)="logout()">
-                Salir
+                SALIR
             </a>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
 <!-- Content app -->
-<mat-sidenav-container>
-    <mat-sidenav #sidenav>
+<mat-sidenav-container [style.display]="isMobileMenuClicked ? 'block' : 'none'">
+    <mat-sidenav
+        (closed)="onSidenavClosed()" 
+        #sidenav>
         <mat-nav-list>
             <a 
                 mat-list-item 
-                [routerLink]="'/home'">
+                [routerLink]="'/home'"
+                routerLinkActive="active-link">
                 Home
             </a>
             <a 
                 mat-list-item 
-                [routerLink]="'/quienes-somos'">
+                [routerLink]="'/quienes-somos'"
+                routerLinkActive="active-link">
                 ¿Quiénes somos?
             </a>
             <a
                 mat-list-item 
-                [routerLink]="'/adopciones-lista'">
+                [routerLink]="'/adopciones-lista'"
+                routerLinkActive="active-link">
                 Adopción
             </a>
             <a
                 mat-list-item 
-                [routerLink]="'/perdidos-lista'">
+                [routerLink]="'/perdidos-lista'"
+                routerLinkActive="active-link">
                 Perdidos
             </a>
             <a 
                 mat-list-item 
-                [routerLink]="'/donar'">
+                [routerLink]="'/donar'"
+                routerLinkActive="active-link">
                 Donar
             </a>
             <a
@@ -96,7 +114,8 @@
             <a
                 *ngIf="isLoggingAuthenticated"
                 mat-list-item 
-                [routerLink]="'/admin/publicar'">
+                [routerLink]="'/admin/publicar'"
+                routerLinkActive="active-link">
                 Ir al panel
             </a>
             <a
@@ -107,8 +126,4 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
-    <!-- Content -->
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
 </mat-sidenav-container>

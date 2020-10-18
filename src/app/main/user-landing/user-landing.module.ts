@@ -12,6 +12,9 @@ import { LostCasesDetailsComponent } from './user-landing/components/lost-cases/
 import { DonateComponent } from './user-landing/components/donate/donate.component';
 import { BioHistoryComponent } from './user-landing/components/bio-history/bio-history.component';
 
+// Flex
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 const APP_ROUTES: Routes = [
     {
         path: '',
@@ -43,6 +46,7 @@ const APP_ROUTES: Routes = [
     ],
     imports: [
         CommonModule,
+        FlexLayoutModule,
         RouterModule.forChild(APP_ROUTES)
     ],
     exports: [

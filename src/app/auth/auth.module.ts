@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Angular material modules
 import {
@@ -18,6 +19,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
     imports: [
         CommonModule,
         FormsModule,
+        FlexLayoutModule,
         // Angular material modules
         MatInputModule,
         MatButtonModule
@@ -26,6 +28,4 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
         AuthDialogComponent
     ]
 })
-export class AuthModule {
-
-}
+export class AuthModule { }
