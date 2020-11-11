@@ -17,3 +17,14 @@
 .quote-container p {
     font-style: italic;
 }
+
+.border-video {
+    width        : 70%;
+    border-radius: 6px;
+    border-bottom: 4px solid #ffb74d;
+    height       : 1px;
+}
+
+.who-we-are {
+    background-image: url("/assets/SVGs/fondo-4.svg");
+}

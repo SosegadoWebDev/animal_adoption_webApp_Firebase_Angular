@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import Swal from 'sweetalert2';
 
 // Angular material
 import {
@@ -18,24 +17,22 @@ import { AuthService } from 'src/app/auth/auth.service';
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
     public isLoggingAuthenticated: boolean;
     public isMobileMenuClicked: boolean;
     private bodyTag: HTMLElement = document.querySelector('body');
+    private userData: any;
 
     constructor(
         public dialog: MatDialog,
         private auths: AuthService,
         private afAuth: AngularFireAuth,
     ) {
-        this.afAuth.authState.subscribe(() => {
-            this.isLoggingAuthenticated = this.checkAuthenticatedUser();
+        this.afAuth.authState.subscribe((resp) => {
+            console.log(resp);
+            this.userData = resp;
         });
-    }
-
-    ngOnInit() {
-        // this.isLoggingAuthenticated = this.checkAuthenticatedUser();
     }
 
     /**
@@ -51,23 +48,7 @@ export class HeaderComponent implements OnInit {
      * @description Logout method, calls to checkAuthenticatedUser()
      */
     logout(): void {
-        this.auths.logout().then(() => {
-            Swal.fire({
-                allowOutsideClick: false,
-                icon: 'success',
-                text: 'Cerraste sesión!'
-            });
-            this.isLoggingAuthenticated = this.checkAuthenticatedUser();
-        });
-    }
-
-    /**
-     * @method checkAuthenticatedUser
-     *
-     * @returns boolean
-     */
-    private checkAuthenticatedUser(): boolean {
-        return this.auths.isLoggedIn() && this.auths.isAuthenticatedUser();
+        this.auths.logout();
     }
 
     /**

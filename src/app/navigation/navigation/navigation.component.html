@@ -48,20 +48,20 @@
                 DONAR
             </a>
             <a
-                *ngIf="!isLoggingAuthenticated"
+                *ngIf="!auths.isUserLogged"
                 mat-button
                 (click)="openLoginDialog()">
                 INICIAR SESIÓN
             </a>
             <a
-                *ngIf="isLoggingAuthenticated"
+                *ngIf="auths.isUserLogged"
                 mat-button
                 [routerLink]="'/admin/publicar'"
                 routerLinkActive="active-link">
                 IR PANEL
             </a>
             <a
-                *ngIf="isLoggingAuthenticated"
+                *ngIf="auths.isUserLogged"
                 mat-button
                 (click)="logout()">
                 SALIR
@@ -106,20 +106,20 @@
                 Donar
             </a>
             <a
-                *ngIf="!isLoggingAuthenticated"
+                *ngIf="!auths.isUserLogged"
                 mat-list-item 
                 (click)="openLoginDialog()">
                 Iniciar sesión
             </a>
             <a
-                *ngIf="isLoggingAuthenticated"
+                *ngIf="auths.isUserLogged"
                 mat-list-item 
                 [routerLink]="'/admin/publicar'"
                 routerLinkActive="active-link">
                 Ir al panel
             </a>
             <a
-                *ngIf="isLoggingAuthenticated"
+                *ngIf="auths.isUserLogged"
                 mat-list-item 
                 (click)="logout()">
                 Salir

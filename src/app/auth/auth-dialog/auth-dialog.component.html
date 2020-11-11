@@ -18,6 +18,7 @@
             <input 
                 [(ngModel)]="currentUser.email"
                 matInput 
+                type="email"
                 placeholder="Escribe tu e-mail"
                 (keyup.enter)="authLogin()">
         </mat-form-field>
@@ -29,6 +30,7 @@
         <input 
             matInput 
             [(ngModel)]="currentUser.password"
+            type="password"
             placeholder="Escribe tu contraseña"
             (keyup.enter)="authLogin()">
         </mat-form-field>       
@@ -40,6 +42,7 @@
             [disabled]="!(currentUser.password && currentUser.email)"
             color="accent"
             class="color-white"
+            type="submit"
             (click)="authLogin()">
             Iniciar sesión
         </button>

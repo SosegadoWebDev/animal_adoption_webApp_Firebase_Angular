@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 // Firebase
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -13,10 +14,14 @@ import { User } from '../models/user.model';
 
 export class AuthService {
 
+    public isUserLogged: boolean;
+
     constructor(
         private afAuth: AngularFireAuth,
         private router: Router
-    ) { }
+    ) {
+        this.isUserLogged = !!JSON.parse(localStorage.getItem('user')) ? true : false;
+    }
 
     /**
      * @method login
@@ -26,18 +31,46 @@ export class AuthService {
      * @param email string type
      * @param password string type
      */
-    login(user: User): Promise<any> {
-        return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-    }
+    login(user: User, authDialog?): void {
+        const today = new Date();
+        today.setSeconds(3600);
+        Swal.fire({
+            allowOutsideClick: false,
+            icon: 'info',
+            text: 'Iniciando sesión'
+        });
+        Swal.showLoading();
+        this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+            .then((resp) => {
+                this.isUserLogged = true;
+                localStorage.setItem('user', JSON.stringify(resp.user.email));
+                localStorage.setItem('expire', today.toISOString());
+                authDialog.close();
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Iniciaste sesión con éxito!'
+                });
+                this.router.navigate(['/admin/publicar']);
+            })
+            .catch((err) => {
+                console.log(err);
+                let errorMessage: string;
+                this.isUserLogged = false;
 
-    /**
-     * @method isLoggedIn
-     *
-     * @description Method that will be used to know if the users are logged in
-     */
-    isLoggedIn(): boolean {
-        const user = JSON.parse(localStorage.getItem('user'));
-        return user !== null;
+                if (err.code === 'auth/wrong-password') {
+                    errorMessage = 'La contraseña es inválida o tu usuario no posee contraseña.';
+                } else if (err.code === 'auth/user-not-found') {
+                    errorMessage = 'Usuario no encontrado, probablemente escribiste mal el email.';
+                } else if (err.code === 'auth/invalid-email') {
+                    errorMessage = 'Email inválido, escribe un email correcto.';
+                }
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al autenticar usuario',
+                    text: errorMessage
+                });
+            });
     }
 
     /**
@@ -45,10 +78,17 @@ export class AuthService {
      *
      * @description Method that will be used to logout currently users
      */
-    logout(): Promise<any> {
+    public logout(): void {
         localStorage.removeItem('user');
+        localStorage.removeItem('expire');
+        this.isUserLogged = false;
         this.router.navigate(['/home']);
-        return this.afAuth.auth.signOut();
+        Swal.fire({
+            allowOutsideClick: false,
+            icon: 'success',
+            text: 'Cerraste sesión!'
+        });
+        this.afAuth.auth.signOut();
     }
 
     /**
@@ -56,15 +96,16 @@ export class AuthService {
      *
      * @description
      */
-    isAuthenticatedUser(): boolean {
-        const expirationDate: number = Number(localStorage.getItem('expire'));
+    public isAuthenticatedUser(): boolean {
+        const expirationDate = localStorage.getItem('expire');
         const todayDate = new Date();
+        const user = JSON.parse(localStorage.getItem('user'));
 
-        if (expirationDate > todayDate.getTime()) {
+        if (new Date(expirationDate).getTime() > todayDate.getTime() && user) {
             return true;
         } else {
-            localStorage.setItem('user', null);
-            localStorage.setItem('expire', null);
+            localStorage.removeItem('user');
+            localStorage.removeItem('expire');
             return false;
         }
     }

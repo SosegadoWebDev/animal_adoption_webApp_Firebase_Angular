@@ -22,7 +22,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
         FlexLayoutModule,
         // Angular material modules
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
     ],
     entryComponents: [
         AuthDialogComponent
