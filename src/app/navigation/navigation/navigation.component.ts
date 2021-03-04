@@ -30,7 +30,6 @@ export class HeaderComponent {
         private afAuth: AngularFireAuth,
     ) {
         this.afAuth.authState.subscribe((resp) => {
-            console.log(resp);
             this.userData = resp;
         });
     }
@@ -45,7 +44,8 @@ export class HeaderComponent {
     /**
      * @method logout
      *
-     * @description Logout method, calls to checkAuthenticatedUser()
+     * @description 
+     * Logout method, calls to checkAuthenticatedUser()
      */
     logout(): void {
         this.auths.logout();
@@ -73,5 +73,12 @@ export class HeaderComponent {
             evt.open();
             this.bodyTag.style.overflow = 'hidden';
         }
+    }
+
+    /**
+     * @method onLinkItemClicked
+     */
+    public onLinkItemClicked(sidenav): void {
+        sidenav.close();
     }
 }

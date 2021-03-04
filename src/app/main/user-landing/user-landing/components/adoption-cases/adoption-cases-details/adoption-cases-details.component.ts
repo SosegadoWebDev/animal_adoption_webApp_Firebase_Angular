@@ -19,7 +19,7 @@ export class AdoptionCasesDetailsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        // const adoptionDetails = this.afs.collection('publish_cases', ref => ref.where('id', '==', '8sQxHuUwdOJ771ndyNm2')).snapshotChanges();
+        // const adoptionDetails = this.db.collection('publish_cases', ref => ref.where('id', '==', '8sQxHuUwdOJ771ndyNm2')).snapshotChanges();
         const adoptionDetails = this.db.collection('publish_cases').doc('V69DKrpuyRFR7ZOageOm');
         adoptionDetails.get().toPromise()
             .then(resp => {

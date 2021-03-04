@@ -23,16 +23,14 @@ export class AdoptionCasesListComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.adoptionListSubscription = this.casesS.getAdoptionCasesList().subscribe(
-            resp => {
-                this.adoptionList = resp;
-                console.log(this.adoptionList);
-            }, ((err) => {
-                console.log(err);
-            }), () => {
-                console.log('finished adoption list');
-            }
-        );
+        this.adoptionListSubscription = this.casesS.getAdoptionCasesList().subscribe(resp => {
+            this.adoptionList = resp;
+            console.log(this.adoptionList);
+        }, ((err) => {
+            console.log(err);
+        }), () => {
+            console.log('finished adoption list');
+        });
     }
 
     ngOnDestroy(): void {

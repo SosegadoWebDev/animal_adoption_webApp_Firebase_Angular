@@ -50,7 +50,7 @@ export class AuthService {
                     icon: 'success',
                     text: 'Iniciaste sesión con éxito!'
                 });
-                this.router.navigate(['/admin/publicar']);
+                this.router.navigate(['/admin/panel']);
             })
             .catch((err) => {
                 console.log(err);

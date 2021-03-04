@@ -27,4 +27,27 @@
 
 .who-we-are {
     background-image: url("/assets/SVGs/fondo-4.svg");
+    background-size : 100% 100%;
+}
+
+.img-hearth {
+    width: 230px;
+}
+
+.img-how-it-works {
+    width: 360px;
+}
+
+.adoption-card {
+    border-radius: 4px;
+    width        : 100%;
+}
+
+.case-type-icon {
+    border-radius: 12px;
+    width: 60%;
+}
+
+video {
+    margin-bottom: -8px;
 }

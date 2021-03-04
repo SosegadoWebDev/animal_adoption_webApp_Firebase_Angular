@@ -10,12 +10,16 @@ html {
 
 body {
     margin          : 0;
-    background-color: #fafafa;
+    background-color: #ff844e;
 }
 
 /* Background colors */
 .background-cyan-light {
     background-color: #DBF6FF !important;
+}
+
+.background-white {
+    background-color: whitesmoke;
 }
 
 /* Border colors */
@@ -344,6 +348,14 @@ body {
     margin-right: 24px !important
 }
 
+.mt-32 {
+    margin-top: 32px !important;
+}
+
+.mb-32 {
+    margin-bottom: 32px !important;
+}
+
 /* Font size */
 .text-h1 {
     font-size  : 42px !important;
@@ -422,14 +434,6 @@ body {
 /* Font weight */
 .text-bold {
     font-weight: 700 !important;
-}
-
-.text-medium {
-    font-weight: 500 !important;
-}
-
-.text-regular {
-    font-weight: 400 !important;
 }
 
 .text-light {

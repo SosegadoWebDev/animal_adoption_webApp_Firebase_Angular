@@ -1,19 +1,23 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Components
 import { FooterComponent } from './footer/footer.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
     declarations: [
-        FooterComponent
+        FooterComponent,
+        LoadingComponent
     ],
     imports: [
         CommonModule,
-        // Angular material modules
+        FlexLayoutModule
     ],
     exports: [
-        FooterComponent
+        FooterComponent,
+        LoadingComponent
     ]
 })
 

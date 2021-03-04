@@ -56,7 +56,7 @@
             <a
                 *ngIf="auths.isUserLogged"
                 mat-button
-                [routerLink]="'/admin/publicar'"
+                [routerLink]="'/admin/panel'"
                 routerLinkActive="active-link">
                 IR PANEL
             </a>
@@ -78,29 +78,34 @@
             <a 
                 mat-list-item 
                 [routerLink]="'/home'"
+                (click)="onLinkItemClicked(sidenav)"
                 routerLinkActive="active-link">
                 Home
             </a>
             <a 
                 mat-list-item 
                 [routerLink]="'/quienes-somos'"
+                (click)="onLinkItemClicked(sidenav)"
                 routerLinkActive="active-link">
                 ¿Quiénes somos?
             </a>
             <a
                 mat-list-item 
                 [routerLink]="'/adopciones-lista'"
+                (click)="onLinkItemClicked(sidenav)"
                 routerLinkActive="active-link">
                 Adopción
             </a>
             <a
                 mat-list-item 
+                (click)="onLinkItemClicked(sidenav)"
                 [routerLink]="'/perdidos-lista'"
                 routerLinkActive="active-link">
                 Perdidos
             </a>
             <a 
                 mat-list-item 
+                (click)="onLinkItemClicked(sidenav)"
                 [routerLink]="'/donar'"
                 routerLinkActive="active-link">
                 Donar
@@ -108,18 +113,21 @@
             <a
                 *ngIf="!auths.isUserLogged"
                 mat-list-item 
+                (click)="onLinkItemClicked(sidenav)"
                 (click)="openLoginDialog()">
                 Iniciar sesión
             </a>
             <a
                 *ngIf="auths.isUserLogged"
                 mat-list-item 
-                [routerLink]="'/admin/publicar'"
+                (click)="onLinkItemClicked(sidenav)"
+                [routerLink]="'/admin/panel'"
                 routerLinkActive="active-link">
                 Ir al panel
             </a>
             <a
                 *ngIf="auths.isUserLogged"
+                (click)="onLinkItemClicked(sidenav)"
                 mat-list-item 
                 (click)="logout()">
                 Salir

@@ -28,6 +28,7 @@ export class PublishAdoptionComponent implements OnInit, OnDestroy {
     private queryParamsSubscription: Subscription;
     private editMode: boolean;
     private docId: string;
+    public isLoading: boolean;
 
     constructor(
         private fb: FormBuilder,
@@ -62,9 +63,13 @@ export class PublishAdoptionComponent implements OnInit, OnDestroy {
                 Validators.required
             ])
         });
+
+        this.isLoading = false;
     }
 
     ngOnInit() {
+        this.isLoading = true;
+
         this.queryParamsSubscription = this.route.paramMap.subscribe((paramMap: ParamMap) => {
             if (paramMap.has('id')) {
                 this.editMode = true;
@@ -83,7 +88,10 @@ export class PublishAdoptionComponent implements OnInit, OnDestroy {
                             text: 'Ocurrió un error al intentar traer los datos, intentalo nuevamente!'
                         });
                         console.log(err);
-                    });
+                    })
+                    .finally(() => this.isLoading = false)
+            } else {
+                this.isLoading = false;
             }
         });
     }

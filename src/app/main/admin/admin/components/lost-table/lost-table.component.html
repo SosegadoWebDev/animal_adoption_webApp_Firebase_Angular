@@ -1,0 +1,64 @@
+<div class="main-container">
+    <div *ngIf="isLoading">
+        <app-loading></app-loading>
+    </div>
+    <div 
+        class="full-width"
+        [style.display]="isLoading ? 'none' : 'table'">
+        <h2 class="text-h2">Casos de Perdidos</h2>
+        <table 
+            class="full-width"
+            mat-table
+            [dataSource]="dataSource">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="p-12">Nombre</th>
+            <td mat-cell *matCellDef="let row" class="p-12">{{ row.name }}</td>
+            </ng-container>
+            <!-- Animal Type Column -->
+            <ng-container matColumnDef="animalType">
+                <th mat-header-cell *matHeaderCellDef class="p-12">Especie</th>
+                <td mat-cell *matCellDef="let row" class="p-12">{{ row.animalType }}</td>
+            </ng-container>
+            <!-- Lost Date Column -->
+            <ng-container matColumnDef="lostDate">
+                <th mat-header-cell *matHeaderCellDef class="p-12">Fecha</th>
+                <td mat-cell *matCellDef="let row" class="p-12">{{ row.lostDate }}</td>
+            </ng-container>
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef class="p-12">Descripción</th>
+                <td mat-cell *matCellDef="let row" class="p-12">{{ row.description | slice:0:120 }}...</td>
+            </ng-container>
+            <!-- Buttons Column -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="p-12">Botones</th>
+                <td mat-cell *matCellDef="let row">
+                    <div 
+                        fxLayout="row"
+                        class="p-12">
+                        <button
+                            mat-stroked-button
+                            type="button"
+                            color="primary"
+                            class="m-4"
+                            [routerLink]="['/admin/editar/adopcion', row.id]">
+                            Editar
+                        </button>
+                        <button
+                            mat-stroked-button
+                            type="button"
+                            color="accent"
+                            class="m-4"
+                            (click)="onDeleteCase(row)">
+                            Eliminar
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

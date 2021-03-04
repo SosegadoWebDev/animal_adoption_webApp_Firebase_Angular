@@ -40,6 +40,26 @@ export class CasesService {
     }
 
     /**
+     * @method getAdoptionCasesHomeComponent
+     * 
+     * @description Get adoption cases list for home componente
+     * @returns Observable
+     */
+    public getAdoptionCasesHomeComponent(): Observable<any> {
+        return this.afs.collection('publish_cases', ref => ref.limit(4)).get();
+    }
+
+    /**
+     * @method getAdoptionCasesHomeComponent
+     * 
+     * @description Get adoption cases list for home componente
+     * @returns Observable
+     */
+    public getLostCasesHomeComponent(): Observable<any> {
+        return this.afs.collection('lost_cases', ref => ref.limit(4)).get();
+    }
+
+    /**
      * @method getLostCasesList
      *
      * @description Get lost cases list from firestore

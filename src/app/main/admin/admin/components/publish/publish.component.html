@@ -1,17 +1,41 @@
 <div class="main-container">
+    <!-- Publish Buttons -->
+    <h2 class="text-h2">Publicaciones</h2>
     <div class="full-width flex-justify-center">
         <button
             mat-raised-button
             type="button"
             class="mr-8"
-            [routerLink]="['adopcion']">
+            [routerLink]="['/admin/publicar/adopcion']">
             Publicar adopción
         </button>
         <button
             mat-raised-button
             type="button"
-            [routerLink]="['perdido']">
+            [routerLink]="['/admin/publicar/perdido']">
             Publicar perdido
+        </button>
+    </div>
+    <!-- Table Button Adoption -->
+    <h2 class="text-h2">Tabla de Adopciones</h2>
+    <div class="full-width flex-justify-center">
+        <button
+            mat-raised-button
+            type="button"
+            class="mr-8"
+            [routerLink]="['/admin/tabla-adopciones']">
+            Tabla adopciones
+        </button>
+    </div>
+    <!-- Table Button Losts -->
+    <h2 class="text-h2">Tabla de Perdidos</h2>
+    <div class="full-width flex-justify-center">
+        <button
+            mat-raised-button
+            type="button"
+            class="mr-8"
+            [routerLink]="['/admin/tabla-perdidos']">
+            Tabla perdidos
         </button>
     </div>
 </div>

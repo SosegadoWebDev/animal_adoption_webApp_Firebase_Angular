@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Components
 import { UserLandingComponent } from './user-landing/user-landing.component';
@@ -12,8 +13,11 @@ import { LostCasesDetailsComponent } from './user-landing/components/lost-cases/
 import { DonateComponent } from './user-landing/components/donate/donate.component';
 import { BioHistoryComponent } from './user-landing/components/bio-history/bio-history.component';
 
-// Flex
-import { FlexLayoutModule } from '@angular/flex-layout';
+// Angular Material Modules
+import { MatTooltipModule } from '@angular/material';
+
+// App Modules
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const APP_ROUTES: Routes = [
     {
@@ -46,7 +50,9 @@ const APP_ROUTES: Routes = [
     ],
     imports: [
         CommonModule,
+        SharedModule,
         FlexLayoutModule,
+        MatTooltipModule,
         RouterModule.forChild(APP_ROUTES)
     ],
     exports: [

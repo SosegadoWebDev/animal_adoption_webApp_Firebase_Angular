@@ -1,4 +1,9 @@
-<div class="full-width main-container">
+<div *ngIf="isLoading">
+    <app-loading></app-loading>
+</div>
+<div 
+    *ngIf="!isLoading"
+    class="full-width main-container">
     <form
         [formGroup]="form"
         (ngSubmit)="save()">
